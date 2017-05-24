@@ -71,7 +71,7 @@ The idea with even this small project is the demonstrate AngularJS design princi
 Key Components:
 
 1. Favs-List is the primary code you would drop into another app, by doing the following:
-    - Placing the <favs-list></favs-list> directive in HTML.
+    - Placing the ```<favs-list></favs-list>``` directive in HTML.
     - Adding FavsList as a dependency to another app module
 2. Media Type Handling -- since Favorites may or may not include handling media resources, all management of media types like Video, Podcasts and Books are separated from the primary collection management feature of FavsList.    
     - Media Handling is implemented as a separate Component to Favs-List, and can be dropped in as a nested Component with a <embed-media></embed-media> directive. This nested component provides the HTML for each media type.
@@ -84,7 +84,7 @@ Key Components:
 
 Contains:
 1. index.html  
-   - Uses one custom directive in the HTML <fav-list></fav-list>
+   - Uses one custom directive in the HTML ```<fav-list></fav-list>```
 2. app.module.js -- application module declaration, including dependencies for FavsList and the Filter for Trusted URLs.
 
 #### Main Component Files
