@@ -1,2 +1,3 @@
 # heypartner.github.io
-Gloo Project
+Gloo Project -- Favorites List Widget
+
