@@ -24,10 +24,12 @@ Go to (https://heypartner.github.io/) to start the app.
 
 ### Examples
 
+![screenshot](https://s21.postimg.org/hmv746ew7/add-edit-delete.png)
+
 This section provides snapshots of Favorites List commnands, and examples URL from the above four resources.
 
 ```
-!(https://s21.postimg.org/hmv746ew7/add-edit-delete.png)
+![screenshot](https://s21.postimg.org/hmv746ew7/add-edit-delete.png)
 
 ```
 
