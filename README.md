@@ -58,11 +58,11 @@ This project (while small) is designed as if it were a component in a large appl
 
 ### Directory Structure
 
-|-- root (contains index.html and the app module)
-|--> angular 
-|--> core (contains reuable Factories, Services and Filters, independent of this app)
-|--> css
-|--> favs-list (contains Module, Component, Controler and Template for this widget)
+|-- root (contains index.html and the app module)  
+|--> angular  
+|--> core (contains reuable Factories, Services and Filters, independent of this app)  
+|--> css  
+|--> favs-list (contains Module, Component, Controler and Template for this widget)  
 
 ### Main Design Features
 
@@ -83,18 +83,19 @@ Key Components:
 #### Application-Level Files
 
 Contains:
-    1. index.html
-        - Uses one custom directive in the HTML <fav-list></fav-list>
-    2. app.module.js -- application module declaration, including dependencies for FavsList and the Filter for Trusted URLs.
+1. index.html  
+   - Uses one custom directive in the HTML <fav-list></fav-list>
+2. app.module.js -- application module declaration, including dependencies for FavsList and the Filter for Trusted URLs.
 
 #### Main Component Files
 
-These are placed in the favs-list directory, which contains:
-    1. favs-list.module.js -- instantiantes the component and injects Media Handling as dependencies.
-    2. favs-list.component.js -- small file that names the TemplateUrl and Constructor for the component.
-    3. favs-list.controller.js -- Basic List handling for Adding, Editing, Deleting an item.  Things to note:
-        - This also defines the Favs object to share with the Media Embedding handlers.  They expect an object to contain a URL member to extract a URL from.  Media Handling also expects two more members for storing the trusting EmbedSrc and the Type of Media (video, podcast, book, etc);
-    4. favs-list.template.html -- the components HTML
+These are placed in the favs-list directory, which contains:  
+
+1. favs-list.module.js -- instantiantes the component and injects Media Handling as dependencies.
+2. favs-list.component.js -- small file that names the TemplateUrl and Constructor for the component.
+3. favs-list.controller.js -- Basic List handling for Adding, Editing, Deleting an item.  Things to note:  
+    - This also defines the Favs object to share with the Media Embedding handlers.  They expect an object to contain a URL member to extract a URL from.  Media Handling also expects two more members for storing the trusting EmbedSrc and the Type of Media (video, podcast, book, etc);
+4. favs-list.template.html -- the components HTML
 
 #### Media Handling Files
 
@@ -105,9 +106,9 @@ The media handling code is divided into Nested HTML via the <embed-media> compon
 Since Media Handling could be used by many other apps, independent of Favorite lists, it goes in a Core directory.
 
 Files:
-    1. core/kw-embedmedia.component.js -- defines the <embed-media> directive, primarily with ng-if looking and Media Types defined by the EmbedMedia factory service.
-    2. core/kw-embed.factory.js -- this is where the logic is that knows about Youtube, iHeart, Amazon and TED.  No other code needs to know about this.  Other code just inject this factory and calls its "embed" function passing a URL.
-    3. core/filters/kw-trusted.js -- tiny piece of code for adding a Filter for parsing unsecure URLs with $sce.
+1. core/kw-embedmedia.component.js -- defines the <embed-media> directive, primarily with ng-if looking and Media Types defined by the EmbedMedia factory service.
+2. core/kw-embed.factory.js -- this is where the logic is that knows about Youtube, iHeart, Amazon and TED.  No other code needs to know about this.  Other code just inject this factory and calls its "embed" function passing a URL.
+3. core/filters/kw-trusted.js -- tiny piece of code for adding a Filter for parsing unsecure URLs with $sce.
 
 
 ## Authors
