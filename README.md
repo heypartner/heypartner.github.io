@@ -106,7 +106,7 @@ The media handling code is divided into Nested HTML via the <embed-media> compon
 Since Media Handling could be used by many other apps, independent of Favorite lists, it goes in a Core directory.
 
 Files:
-1. core/kw-embedmedia.component.js -- defines the <embed-media> directive, primarily with ng-if looking and Media Types defined by the EmbedMedia factory service.
+1. core/kw-embedmedia.component.js -- defines the ```<embed-media></embed-media>``` directive, primarily with ng-if looking and Media Types defined by the EmbedMedia factory service.
 2. core/kw-embed.factory.js -- this is where the logic is that knows about Youtube, iHeart, Amazon and TED.  No other code needs to know about this.  Other code just inject this factory and calls its "embed" function passing a URL.
 3. core/filters/kw-trusted.js -- tiny piece of code for adding a Filter for parsing unsecure URLs with $sce.
 
