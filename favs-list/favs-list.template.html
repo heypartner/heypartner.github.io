@@ -1,0 +1,34 @@
+    <div class="favs">
+      <!--
+        ADD = ng-change to click to add
+        -->
+      <form class="favs__form" ng-submit="$ctrl.addFav();">
+        <input type="text" 
+          placeholder="Add New Favorite URL" 
+          ng-model="$ctrl.newURL">
+      </form>
+      
+      <!--
+        LIST = ng-repeat on LI.P
+        EDIT = double click P to ng-hide, and ng-show INPUT, both linked to list
+          showEditField boolean controls hide/show/blur of P vs INPUT elements
+        DELETE = A-tag with X.  ng-click the X.
+        -->
+      <ul class="favs__list">
+        <li ng-repeat="item in $ctrl.list">
+          <p ng-dblclick="showEditField = true;" ng-hide="showEditField">
+            {{ item.description }}
+          </p>
+          <div ng-show="showEditField">
+            <input 
+              type="text" 
+              ng-model="item.description;" 
+              ng-blur="$ctrl.updateFav(item, $index); showEditField = false;">
+          </div>
+          <a href="" ng-click="$ctrl.removeFav(item, $index);">
+            &#215;
+          </a>          
+          <embed-media id="player-{{$index}}" embedtype="{{item.embedType}}" embedsrc="{{item.embedSrc}}"></embed-media>
+        </li>
+      </ul>
+    </div>
