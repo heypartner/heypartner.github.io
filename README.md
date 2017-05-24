@@ -8,7 +8,7 @@ Go to (https://heypartner.github.io/) to start the app.
 
 1. Click on "Add New Favorite URL" to add a valid location URL from the following 4 resources:
 
-    - **Youtube** -- Any Youtube shareable linke will suffice
+    - **Youtube** -- Any Youtube shareable link will suffice
 
     - **TED Talks** -- Go to TED.com and choose a Talk you like.  Then copy the URL in your browser's location bar and paste into the Favorites List
 
@@ -24,13 +24,13 @@ Go to (https://heypartner.github.io/) to start the app.
 
 ## Examples
 
-This section provides snapshots of Favorites List commnands, and examples URL from the above four resources.
+This section provides snapshots of Favorites List commands, and example URLs from the above four resources.
 
 ### Screenshot of where to ADD, EDIT and DELETE favorites.
 
 ![screenshot](https://s21.postimg.org/hmv746ew7/add-edit-delete.png)
 
-### At Youtube, any shareable URL will work. It is easiest to just choose and video, and copy the URL in your Browser's location bar.
+### At Youtube, any shareable URL will work. It is easiest to just choose any video and copy the URL in your Browser's location bar.
 
 ![screenshot](https://s22.postimg.org/y070geaa9/youtube.png)
 
@@ -49,7 +49,7 @@ This section provides snapshots of Favorites List commnands, and examples URL fr
 
 ## Built With
 
-* Angularjs latest.  Not special features are used.
+* Angularjs latest.  No special features are used.
 * No 3rd-Party Plugins are used.
 
 ## Architecture Notes
@@ -60,24 +60,24 @@ This project (while small) is designed as if it were a component in a large appl
 
 |-- root (contains index.html and the app module)  
 |--> angular  
-|--> core (contains reuable Factories, Services and Filters, independent of this app)  
+|--> core (contains reuable Factories, Services and Filters, useful for many other apps)  
 |--> css  
 |--> favs-list (contains Module, Component, Controler and Template for this widget)  
 
 ### Main Design Features
 
-The idea with even this small project is the demonstrate AngularJS design principles for making reusable code using Components and Services.  This code is meant to be picked upped and dropped into another application merely by copying the files and adding Components as dependencies in the next app that needs a Favorites List.
+The idea with even this small project is to demonstrate AngularJS design principles for making reusable code using Components and Services.  This code is meant to be picked up and dropped into another application merely by copying the files and adding Components as dependencies in the next app that needs a Favorites List.
 
 Key Components:
 
 1. Favs-List is the primary code you would drop into another app, by doing the following:
     - Placing the ```<favs-list></favs-list>``` directive in HTML.
     - Adding FavsList as a dependency to another app module
-2. Media Type Handling -- since Favorites may or may not include handling media resources, all management of media types like Video, Podcasts and Books are separated from the primary collection management feature of FavsList.    
-    - Media Handling is implemented as a separate Component to Favs-List, and can be dropped in as a nested Component with a <embed-media></embed-media> directive. This nested component provides the HTML for each media type.
-    - Any Component that needs Media Handling also includes FavsEmbed as a dependency to its Constructor and passes a URL to it via a FavsEmbed.embed function.
-3. Since Media Handling requires users pasting in potentially unsecure URLs for "src" attributes, I added a Filter to call $sce.  It is used with the ng-src to filter on URL and return a $sce-clean one.  Like this:
-    - <iframe ng-src="{{media.embedsrc | trusted }}">
+2. Media Type Handling -- since Favorites may or may not include handling media resources, all management of media types like Video, Podcasts and Books are separated from the basic collection management features of FavsList.    
+    - Media Handling is implemented as a separate Component to FavsList, and can be dropped in as a nested Component with a ```<embed-media></embed-media>``` directive. This nested component provides the HTML for each media type.
+    - Any Component that needs Media Handling also includes FavsEmbed as a dependency to its Constructor and passes a URL to it via a ```FavsEmbed.embed()``` function.
+3. Since Media Handling requires users pasting potentially unsecure URLs for "src" attributes, I added a Filter to call $sce.  It is used with the ng-src to filter on URL and return a $sce-clean one.  Like this:
+    - ```<iframe ng-src="{{media.embedsrc | trusted }}">```
 
 
 #### Application-Level Files
@@ -91,17 +91,17 @@ Contains:
 
 These are placed in the favs-list directory, which contains:  
 
-1. favs-list.module.js -- instantiantes the component and injects Media Handling as dependencies.
+1. favs-list.module.js -- instantiates the component and injects Media Handling as dependencies.
 2. favs-list.component.js -- small file that names the TemplateUrl and Constructor for the component.
 3. favs-list.controller.js -- Basic List handling for Adding, Editing, Deleting an item.  Things to note:  
-    - This also defines the Favs object to share with the Media Embedding handlers.  They expect an object to contain a URL member to extract a URL from.  Media Handling also expects two more members for storing the trusting EmbedSrc and the Type of Media (video, podcast, book, etc);
+    - This also defines the Favs object to share with the Media Embedding handlers.  They expect an object to contain a URL member to extract a URL from.  Media Handling also expects two more members for storing the trusted EmbedSrc and the Media Type (video, podcast, book, etc);
 4. favs-list.template.html -- the components HTML
 
 #### Media Handling Files
 
 These are not needed by all Favs-List component implementations -- only when the list items contain media and you want the list to display the media onscreen.
 
-The media handling code is divided into Nested HTML via the <embed-media> component directive.  Just post that into any other component template that wants media support.  And there is a Factory for actually created the URLs to embed from the URL the user pastes.  This service is injected into the Favs-List constructor, and called via FavsMedia.embed(favobject) to modify the favorite to support displaying media types.
+The media handling code is divided into Nested HTML via the ```<embed-media>``` component directive.  Just post that into any other component template that wants media support.  And there is a Factory for actually created the URLs to embed from the URL the user pastes.  This service is injected into the Favs-List constructor, and called via ```FavsMedia.embed(myfavObject)``` to modify the favorite to support displaying media types.
 
 Since Media Handling could be used by many other apps, independent of Favorite lists, it goes in a Core directory.
 
